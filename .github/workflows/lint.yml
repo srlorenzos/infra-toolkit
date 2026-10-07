@@ -1,0 +1,21 @@
+name: qualidade
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  bash:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: shellcheck linux/*.sh
+      - run: bash linux/health-check.sh 99 || true
+  powershell:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - shell: pwsh
+        run: |
+          $r = Invoke-ScriptAnalyzer -Path windows -Recurse -Severity Error
+          $r | Format-Table -AutoSize
+          if ($r) { exit 1 }

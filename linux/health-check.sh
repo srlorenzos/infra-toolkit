@@ -9,6 +9,7 @@ WARN=0
 ok()   { printf '\033[32m[ OK ]\033[0m %s\n' "$*"; }
 warn() { printf '\033[33m[ATEN]\033[0m %s\n' "$*"; WARN=1; }
 
+# shellcheck source=/dev/null
 echo "== $(hostname) — $(. /etc/os-release 2>/dev/null && echo "$PRETTY_NAME") — $(date '+%d/%m/%Y %H:%M')"
 echo "Uptime: $(uptime -p 2>/dev/null || uptime)"
 

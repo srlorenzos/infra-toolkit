@@ -1,5 +1,7 @@
 # infra-toolkit
 
+[![qualidade](https://github.com/srlorenzos/infra-toolkit/actions/workflows/lint.yml/badge.svg)](https://github.com/srlorenzos/infra-toolkit/actions/workflows/lint.yml) ![PowerShell](https://img.shields.io/badge/PowerShell-5.1%20%7C%207-5391FE?logo=powershell&logoColor=white) ![Bash](https://img.shields.io/badge/Bash-4%2B-4EAA25?logo=gnubash&logoColor=white)
+
 Scripts curtos e práticos para **suporte técnico e infraestrutura**, em Windows (PowerShell) e Linux (Bash). Cada um responde rápido à pergunta "o que está errado com esta máquina?".
 
 | Script | Plataforma | O que faz |
