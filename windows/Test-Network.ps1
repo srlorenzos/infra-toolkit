@@ -11,7 +11,8 @@
 param(
     [string[]]$Hosts = @('google.com', 'microsoft.com', 'github.com'),
     [int[]]$Ports = @(443, 80),
-    [string]$PortTarget = 'github.com'
+    [string]$PortTarget = 'github.com',
+    [string]$InternetProbe = '1.1.1.1'
 )
 
 $results = [System.Collections.Generic.List[object]]::new()
@@ -31,8 +32,8 @@ if ($cfg) {
     Add-Result 'Adaptador' $false 'Nenhum adaptador conectado com gateway'
 }
 
-$inetOk = Test-Connection -ComputerName 1.1.1.1 -Count 2 -Quiet -ErrorAction SilentlyContinue
-Add-Result 'Internet (1.1.1.1)' $inetOk 'ping'
+$inetOk = Test-Connection -ComputerName $InternetProbe -Count 2 -Quiet -ErrorAction SilentlyContinue
+Add-Result "Internet ($InternetProbe)" $inetOk 'ping'
 
 foreach ($h in $Hosts) {
     try {
